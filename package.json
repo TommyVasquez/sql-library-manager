@@ -1,7 +1,7 @@
 {
     "name": "sql-library-manager",
     "version": "1.0.0",
-    "description": "",
+    "description": "Sql library manager",
     "main": "app.js",
     "scripts": {
         "start": "nodemon ./bin/www"
