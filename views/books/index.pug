@@ -1,23 +1,27 @@
 extends ../layout
 
 block content
-  h1= title
-  div.subheader
-    a.button(href="/books/new") Create New Book
-    p
-  table
-      thead
-        tr
-          th Title
-          th Author
-          th Genre
-          th Year
-      tbody        
-        each book in books
-          book        
-            tr
-              td
-                a(href = "/books/" + book.id) #{book.title}
-              td= book.author
-              td= book.genre
-              td= book.year       
+  div.box-header
+    div.book-title
+      h1= title
+      p
+        a.button(href="/books/new") Create New Book
+    div.book-search
+      input#search(type='text' placeholder='Search for Books...')
+  div.box-body
+    table#table
+        thead
+          tr
+            th Title
+            th Author
+            th Genre
+            th Year
+        tbody        
+          each book in books
+            book        
+              tr.row
+                td
+                  a(href = "/books/" + book.id) #{book.title}
+                td= book.author
+                td= book.genre
+                td= book.year       

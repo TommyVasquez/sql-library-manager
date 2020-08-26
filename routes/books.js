@@ -29,7 +29,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const books = await Book.findAll({
             order: [['createdAt', 'DESC']],
-            limit: 10,
+            // limit: 10,
         });
         res.render('books/index', { books, title: 'Books' });
     })
@@ -84,7 +84,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const book = await Book.findByPk(req.params.id);
         if (book) {
-            res.render('books/update', { book, title: book.title });
+            res.render('books/update', { book, title: 'Update Book' });
         } else {
             // res.sendStatus(404);
             res.render('notFound');
