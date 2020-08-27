@@ -94,13 +94,16 @@ const appendPageLinks = (list) => {
  * Call functions
  */
 const textSearch = document.querySelector('input#search');
-textSearch.addEventListener('keyup', (e) => {
-    console.log(e.target.value);
-    if (e.target.value === '') {
-        showPage(bookItems, 1);
-    } else {
-        searchBook(e.target);
-    }
-});
+if (textSearch) {
+    textSearch.addEventListener('keyup', (e) => {
+        console.log(e.target.value);
+        if (e.target.value === '') {
+            showPage(bookItems, 1);
+        } else {
+            searchBook(e.target);
+        }
+    });
+}
+
 showPage(bookItems, 1);
 appendPageLinks(bookItems);

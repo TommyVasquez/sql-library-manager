@@ -13,16 +13,6 @@ function asyncHandler(cb) {
     };
 }
 
-const paginate = ({ page, pageSize }) => {
-    const offset = page * pageSize;
-    const limit = pageSize;
-
-    return {
-        offset,
-        limit,
-    };
-};
-
 /* GET books listing. */
 router.get(
     '/',
@@ -64,19 +54,19 @@ router.post(
     })
 );
 
-/* Edit book form. */
-router.get(
-    '/:id/update',
-    asyncHandler(async (req, res) => {
-        const book = await Book.findByPk(req.params.id);
-        if (book) {
-            res.render('books/update', { book, title: 'Update Book' });
-        } else {
-            // res.sendStatus(404);
-            res.render('notFound');
-        }
-    })
-);
+/* Update book form. */
+// router.get(
+//     '/:id/update',
+//     asyncHandler(async (req, res) => {
+//         const book = await Book.findByPk(req.params.id);
+//         if (book) {
+//             res.render('books/update', { book, title: 'Update Book' });
+//         } else {
+//             // res.sendStatus(404);
+//             res.render('notFound');
+//         }
+//     })
+// );
 
 /* GET individual book. */
 router.get(
@@ -101,7 +91,8 @@ router.post(
             book = await Book.findByPk(req.params.id);
             if (book) {
                 await book.update(req.body);
-                res.redirect('/books/' + book.id);
+                // After update redirect to books list
+                res.redirect('/books');
             } else {
                 // res.sendStatus(404);
                 res.render('notFound');
