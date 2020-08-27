@@ -12,7 +12,6 @@ const itemsPerPage = 10;
  * @param inputSearch input text
  ***/
 const searchBook = (inputSearch) => {
-    console.log(inputSearch);
     let searchValue = inputSearch.value.toLowerCase().trim();
     let table_tr = document
         .getElementById('table')
@@ -81,8 +80,6 @@ const appendPageLinks = (list) => {
                 a[i].classList.remove('active');
             }
             const target = e.target.tagName;
-            console.log(target);
-
             e.target.classList.add('active');
             let value = parseInt(e.target.innerText);
             showPage(list, value);
@@ -96,7 +93,6 @@ const appendPageLinks = (list) => {
 const textSearch = document.querySelector('input#search');
 if (textSearch) {
     textSearch.addEventListener('keyup', (e) => {
-        console.log(e.target.value);
         if (e.target.value === '') {
             showPage(bookItems, 1);
         } else {
